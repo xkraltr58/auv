@@ -1,0 +1,22 @@
+camera_controller:
+  # Specify the type of the controller
+  type: joint_trajectory_controller/JointTrajectoryController
+
+  # List the joints that this controller will control
+  joints:
+    - depth_camera_joint
+
+  # Constraints for the controller
+  constraints:
+    goal_time: 0.6                # Maximum time allowed for reaching the goal
+    stopped_velocity_tolerance: 0.02  # Tolerance for considering the joint as "stopped"
+    # Add more constraints here as needed
+
+  # Gains for the controller (PID parameters)
+  gains:
+    depth_camera_joint:
+      p: 100.0  # Proportional gain
+      i: 0.01   # Integral gain
+      d: 10.0   # Derivative gain
+      i_clamp: 1.0  # Maximum integral term limit
+      antiwindup: gain  # Anti-windup strategy (gain or none)
